@@ -1,0 +1,43 @@
+{
+  "name": "job-scraper",
+  "version": "0.1.0",
+  "bin": {
+    "job-scraper": "bin/job-scraper.js"
+  },
+  "scripts": {
+    "build": "tsc && tsc --build --clean && npm run lint",
+    "cdk": "npx aws-cdk@latest",
+    "license:fix": "npm run license:pipfile && npx @cdklabs/cdk-cicd-wrapper-cli license --fix",
+    "license:pipfile": "source .venv/bin/activate && pip install pipenv && pipenv install -r requirements.txt -r lambda_layer/python/requirements.txt",
+    "lint:fix": "npx eslint . --ext .ts --fix && npm run lint:python",
+    "lint:python": "source .venv/bin/activate && black lambda/ && deactivate",
+    "lint": "npx eslint . --ext .ts --max-warnings 0",
+    "postinstall": "python3 -m venv .venv && source .venv/bin/activate && pip3 install -r requirements.txt && deactivate",
+    "test": "jest",
+    "watch": "tsc -w"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "22.7.9",
+    "@types/prettier": "3.0.0",
+    "@types/source-map-support": "0.5.10",
+    "@typescript-eslint/eslint-plugin": "7.8.0",
+    "@typescript-eslint/parser": "7.8.0",
+    "aws-cdk": "2.178.1",
+    "eslint-plugin-import": "2.29.1",
+    "eslint": "8.57.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.4.3"
+  },
+  "dependencies": {
+    "@typescript-eslint/visitor-keys": "8.3.0",
+    "aws-cdk-lib": "2.178.1",
+    "cdk-nag": "^2.35.14",
+    "constructs": "^10.0.0"
+  }
+}

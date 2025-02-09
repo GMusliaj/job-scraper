@@ -1,0 +1,11 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+.env
+dist
+.venv
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+job-scraper.code-workspace
